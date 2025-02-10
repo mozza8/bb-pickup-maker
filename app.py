@@ -1,10 +1,13 @@
+from flask import Flask, request, render_template_string
+from flask_cors import CORS
+import requests
+from flask_sqlalchemy import SQLAlchemy
+app = Flask(__name__)
+CORS(app)
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from flask import Flask, request, render_template_string
 import threading
 import time
-
-app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
@@ -79,6 +82,3 @@ def schedule_function(username, password,interval, repetitions):
       threading.Timer(interval, task).start()
 
   task()
-
-
-
